@@ -1,0 +1,23 @@
+//import module
+const express = require('express');         //import express
+const app = express();
+const path = require('path');               //import path
+const router = require('./routes/router');  //import router
+
+// static & dynamic setup
+app.use(express.static(path.join(__dirname,'public'))); // กำหนดที่อยู่ static file
+app.set('views', path.join(__dirname,"views"));         // กำหนดที่อยู่ templates
+app.set('view engine','ejs');                           // กำหนดให้ใช้ ejs
+
+// body-parser
+app.use(express.urlencoded({extended: false}));
+app.use(express.json());
+
+// use router
+app.use(router);
+
+//port
+const port = 8080;
+app.listen(port,()=>{
+    console.log(`--->> Server run on port:${port}`);
+});
