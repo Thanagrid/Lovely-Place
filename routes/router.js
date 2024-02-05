@@ -1,13 +1,14 @@
-//import module
+const { render } = require('ejs');
 const express = require('express');
-const router = express.Router();    // เรียกใช้ Router()
-const mysql = require('mysql2');    //import mysql2
-const multer = require('multer');   //import multer
+const router = express.Router();
 
 // index page
-router.get('/',(req,res)=>{
-    res.status(200).send('Test index path');
+router.get('/', (req,res)=>{
+    if(req.cookies.user_id){    //ถ้ามี cookie user_id ให้ render index.ejs
+        res.render('index');
+    }else{                      //ถ้าไม่มีให้ไปที่ /login
+        res.redirect('/login');
+    };
 });
 
-//export module router
 module.exports = router;

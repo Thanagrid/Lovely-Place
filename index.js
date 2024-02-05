@@ -1,8 +1,10 @@
 //import module
-const express = require('express');         //import express
+const express = require('express');                     //import express
 const app = express();
-const path = require('path');               //import path
-const router = require('./routes/router');  //import router
+const path = require('path');                           //import path
+const cookieParser = require('cookie-parser');          //import cookie-parser
+const loginRouter = require('./routes/loginRouter');    //import loginRouter
+const router = require('./routes/router');
 
 // static & dynamic setup
 app.use(express.static(path.join(__dirname,'public'))); // กำหนดที่อยู่ static file
@@ -12,8 +14,10 @@ app.set('view engine','ejs');                           // กำหนดให
 // body-parser
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
-
-// use router
+// cookie-parser
+app.use(cookieParser());
+// router
+app.use(loginRouter); //loginRouter
 app.use(router);
 
 //port
