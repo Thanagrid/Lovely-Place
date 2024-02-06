@@ -1,14 +1,41 @@
 const { render } = require('ejs');
 const express = require('express');
-const router = express.Router();
+const router = express.Router();    // เรียกใช้ Router()
+const mysql = require('mysql2');    //import mysql2
+
+//MySQL Connection
+pool = mysql.createPool({
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'lovely_place', 
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit:0
+ });
+
+ //MySQL Connection Check
+ pool.getConnection((err)=>{
+    if(err){
+        console.log(err);
+    }else{
+        console.log(">> MySQL : Database Connecting...");
+    }
+ });
 
 // Index page
 router.get('/', (req,res)=>{
-    if(req.cookies.user_id){    //ถ้ามี cookie user_id ให้ render index.ejs
-        res.render('index');
-    }else{                      //ถ้าไม่มีให้ไปที่ /login
-        res.redirect('/login');
-    };
+    // ดึงข้อมูลโพสต์ เรียงลำดับจากใหม่สุด
+    const sql_poolPost = 'SELECT post_id, post_title, post_preDes ,post_img FROM posts ORDER BY post_id DESC;';
+    pool.query(sql_poolPost, (err, results, fields)=>{
+        if(err){
+            console.log(err);
+            res.status(500);
+        }else{
+            console.log(results);
+            res.render('index',{posts: results});
+        }
+   });
 });
 
 // Test menu page

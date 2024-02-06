@@ -19,7 +19,12 @@ pool = mysql.createPool({
 
 // Login page
 router.get('/login', (req,res)=>{
-    res.render('login',{message:''});
+    //ตรวจสอบการเข้าสู่ระบบ
+    if(req.cookies.user_id){
+        res.render('login',{message:'You already login. <a href = "/"> Click here to homepage.</a>'});
+    }else{
+        res.render('login',{message:''});
+    }
 });
 
 // Login verify ตรวจสอบ username & password จาก req login.ejs
