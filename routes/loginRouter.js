@@ -24,18 +24,17 @@ router.get('/login', (req,res)=>{
 
 // Login verify ตรวจสอบ username & password จาก req login.ejs
 router.post('/login/verify', (req,res)=>{
-    //ดึงข้อมูลจาก database เงื่อนไขตาม user_name & user_password ทีผู้ใช้ req มา
     const sql_poolUser = 'SELECT * FROM users WHERE user_name = ? AND user_password = ?;' 
     pool.query(sql_poolUser, [req.body.username, req.body.password], (err, results, fields)=>{
         if(err){ 
             console.log(err);
             res.status(500);
         }else{
-            if(results.length == 0){        //ถ้าไม่มีข้อมูลในตาราง (ไม่มี user_name & user_password ตรงตามที่ผู้ใช้กรอก)
+            if(results.length == 0){    //ถ้าไม่มีข้อมูลในตาราง (ไม่มี user_name & user_password ตรงตามที่ผู้ใช้กรอก)
                 res.render('login',{message: 'Your Username or password is incorrect.'}); // render login.ejs ใหม่ โดยส่งข้อความไปบอก
-            }else{                          // ถ้ามีข้อมูล user_name & user_password ตรงตามที่ผู้ใช้กรอก
-                res.cookie('user_id',results[0].user_id,{maxAge:3600000}); //เก็บ cookie user_id ไว้ ครึ่งชั่วโมง
-                res.cookie('user_name',results[0].user_name,{maxAge:3600000});
+            }else{  // ถ้ามีข้อมูล user_name & user_password ตรงตามที่ผู้ใช้กรอก
+                res.cookie('user_id',results[0].user_id,{maxAge:3600000}); //เก็บ cookie user_id ไว้ครึ่งชั่วโมง
+                res.cookie('user_name',results[0].user_name,{maxAge:3600000});  //เก็บ cookie user_name ไว้ครึ่งชั่วโมง
                 res.redirect('/');  //กลับไปที่ '/'
             };
         };
@@ -50,15 +49,14 @@ router.get('/register', (req,res)=>{
 
 // register verify รับ username & password จาก req registor.ejs
 router.post('/register/verify', (req,res)=>{
-    //ตรวจสอบว่ามี user_name นี้อยู่แล้วรึเปล่า (เหมือนตรวจสอบว่ามีคนใช้ username นี้ไปรึยัง)
+    //ตรวจสอบว่ามี user_name นี้อยู่แล้วรึเปล่า (ตรวจสอบว่ามีคนใช้ username นี้ไปรึยัง)
     const sql_poolUser = 'SELECT * FROM users WHERE user_name = ?;'
-    //ดึงข้อมูลจาก database เงื่อนไขตาม user_name ทีผู้ใช้ req มา
     pool.query(sql_poolUser, [req.body.username], (err, results, fields)=>{
         if(err){
             console.log(err);
             res.status(500);
         }else{
-            if(results.length == 0){    //ถ้าไม่มีข้อมูลในตาราง (user_name ที่ผู้ใช้ต้องการสมัครใหม่ไม่ตรงกับที่มีอยู่แล้ว)
+            if(results.length == 0){    //ถ้าไม่มีข้อมูลในตาราง (user_name ที่ผู้ใช้ต้องการสมัครใหม่ไม่ซ้ำกับที่มีอยู่แล้ว)
                 // บันทึก user_name & user_password ลงตาราง
                 const sql_insertUser = 'INSERT INTO users(user_name, user_password) VALUES(?, ?);'
                 pool.query(sql_insertUser,[req.body.username, req.body.password], (err, results, fields)=>{
@@ -69,7 +67,7 @@ router.post('/register/verify', (req,res)=>{
                         res.redirect('/login'); //เมื่อบันทึกข้อมูลเสร็จแล้ว ส่งกลับไปยัง /login
                     }
                 });
-            }else{                      //ถ้ามีข้อมูลในตาราง (user_name ซ้ำกับที่มีอยู่แล้ว)
+            }else{ //ถ้ามีข้อมูลในตาราง (user_name ซ้ำกับที่มีอยู่แล้ว)
                 res.render('register',{message: 'Sorry, this username is already in use.'}); //render regis.ejs ใหม่ โดยส่งข้อความไปบอก
             };
         };

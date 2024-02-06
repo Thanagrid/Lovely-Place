@@ -2,7 +2,7 @@ const { render } = require('ejs');
 const express = require('express');
 const router = express.Router();
 
-// index page
+// Index page
 router.get('/', (req,res)=>{
     if(req.cookies.user_id){    //ถ้ามี cookie user_id ให้ render index.ejs
         res.render('index');
@@ -10,5 +10,10 @@ router.get('/', (req,res)=>{
         res.redirect('/login');
     };
 });
+
+// Test menu page
+router.get('/dev', (req,res)=>{
+    res.render('test_menu');
+})
 
 module.exports = router;
