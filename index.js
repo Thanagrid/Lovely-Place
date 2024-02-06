@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser');                      //import coo
 const loginRouter = require('./routes/loginRouter');                //import loginRouter
 const router = require('./routes/router');                          //import Main router
 const editNamePassRouter = require('./routes/editNamePassRouter');  //import change name password router
-const postRouter = require('./routes/post');                        //import post router
+const postRouter = require('./routes/postRouter');                        //import post router
 
 // static & dynamic setup
 app.use(express.static(path.join(__dirname,'public'))); // กำหนดที่อยู่ static file

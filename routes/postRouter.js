@@ -61,16 +61,27 @@ router.post('/new_post/upload', multerUpload.single('img'),(req,res)=>{
 router.get('/:post_id', (req,res)=>{
    //ดึงข้อมูล post ตาม post_id (ได้จาก URL Parameter)
    const sql_poolPost = 'SELECT * FROM posts WHERE post_id = ?;';
-   pool.query(sql_poolPost, [req.params.post_id], (err, results, fields)=>{
+   pool.query(sql_poolPost, [req.params.post_id], (err, results_post, fields)=>{
       if(err){
          console.log(err);
          res.status(500);
       }else{
          // ถ้าไม่มีข้อมูล ส่งกลับไปยังหน้า index
-         if(results.length == 0){ 
+         if(results_post.length == 0){ 
             res.redirect('/');
          }else{
-            res.render('post',{postData: results[0]});
+            // ดึงชื่อคน post
+            const sql_poolUser = 'SELECT user_name FROM users WHERE user_id = ?;'
+            pool.query(sql_poolUser, [results_post[0].user_id], (err, results_user, fields)=>{
+               if(err){
+                  console.log(err);
+                  res.status(200);
+               }else{
+                  // ส่งข้อมูล post และ username
+                  res.render('post',{postData: results_post[0], userData: results_user[0]});
+               }
+            });
+            
          }
       }
    });
