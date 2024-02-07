@@ -3,11 +3,10 @@ const express = require('express');                                 //import exp
 const app = express();
 const path = require('path');                                       //import path
 const cookieParser = require('cookie-parser');                      //import cookie-parser
-const loginRouter = require('./routes/loginRouter');                //import loginRouter
 const router = require('./routes/router');                          //import Main router
-const editNamePassRouter = require('./routes/editNamePassRouter');  //import change name password router
-const postRouter = require('./routes/postRouter');                  //import post router
-const manageRouter = require('./routes/manageRouter');
+const accountRouter = require('./routes/AC_accountRouter');                 
+const postRouter = require('./routes/P_postRouter');                               
+const adminRouter = require('./routes/AD_adminRouter');               
 
 // static & dynamic setup
 app.use(express.static(path.join(__dirname,'public'))); // กำหนดที่อยู่ static file
@@ -20,11 +19,11 @@ app.use(express.json());
 // cookie-parser
 app.use(cookieParser());
 // router
-app.use(loginRouter);           //loginRouter
+
 app.use(router);                //main router
-app.use(editNamePassRouter);    // change name password router
+app.use(accountRouter);           //loginRouter
 app.use(postRouter);            // post router
-app.use(manageRouter);          // manage router
+app.use(adminRouter);           // admin router
 
 //port
 const port = 8080;

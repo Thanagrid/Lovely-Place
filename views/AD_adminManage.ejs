@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lovely Place | ADMIN - Management</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
+    <style>
+        *{
+            font-family: 'Kanit', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-light ">
+    
+    <%- include ('navbar.ejs') %>
+
+    <div class="container d-flex justify-content-center align-content-center">
+        <div class="col-lg-4 border bg-white py-3 px-5 rounded-3 d-flex flex-column mt-5 bg-light">
+            <h2 class="text-center">Admin Management</h2>
+            <a href="/admin_management/users" class="btn btn-primary my-2">User Manage</a>
+            <a href="/admin_management/posts" class="btn btn-primary my-2">Post Manage</a>
+            <a href="/" class="btn btn-secondary my-2">Back Homepage</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lovely Place | Post Management</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
+    <style>
+        *{
+            font-family: 'Kanit', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    
+    <%- include ('navbar.ejs') %>
+
+    <div class="container mt-5">
+        <h2 class="mb-2">จัดการโพสต์ของคุณ</h2>
+        <p>เรียกดู แก้ไข เพิ่ม และลบโพสต์ของคุณได้ที่นี่!!</p>
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered table-light">
+                <thead>
+                    <tr class="table-dark">
+                        <th>ชื่อโพสต์</th>
+                        <th>คำอธิบายย่อ</th>
+                        <th class="text-center">ดู</th>
+                        <th class="text-center">แก้ไข</th>
+                        <th class="text-center">ลบ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% Object.values(postData).forEach((item)=>{ %>
+                    <tr>
+                        <td><%= item.post_title %> </td>
+                        <td><%= item.post_preDes %></td>
+                        <!-- ดูโพสต์ -->
+                        <td>
+                            <a href="/post/<%= item.post_id %>" class="btn btn-success col-12">ดู</ฟ>
+                        </td>
+                        <!-- แก้ไขโพสต์ -->
+                        <td>
+                            <form method="post" action="/manage_post/edit">
+                                <input type="hidden" value="<%= item.post_id %>" name="post_id">
+                                <button type="sumbit" class="btn btn-warning col-12">แก้ไข</button>
+                            </form>
+                        </td>
+                        <!-- ลบโพสต์ -->
+                        <td>
+                            <form method="post" action="/manage_post/delete">
+                                <input type="hidden" value="<%= item.post_id %>" name="post_id">
+                                <button type="sumbit" class="btn btn-danger col-12">ลบ</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+        <div class="d-gird">
+            <a href="/new_post" class="btn btn-secondary col-12">เพิ่มโพสต์</a>     
+        </div>
+           
+    </div>
+
+</body>
+</html>
