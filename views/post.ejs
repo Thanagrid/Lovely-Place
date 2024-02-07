@@ -13,17 +13,20 @@
         }
     </style>
 </head>
-<body class="bg-light ">
+<body class="bg-white">
+
+    <%- include ('navbar.ejs') %>
 
     <div class="container-fluid">
 
         <div class="row justify-content-center mb-5">
             <div class="col-lg-6 col-sm-10 col-12">
-                <div class="card mt-4">
-                    <img class="card-img-top img-fluid" src="img/posts/<%= postData.post_img %>"/>
+                <div class="card mt-4 border-2">
+                    <img class="card-img-top img-fluid" src="../img/posts/<%= postData.post_img %>"/>
                     <div class="card-body">
                         <h3 class="card-title text-center"><%= postData.post_title %></h3>
-                        <p class="card-text">&emsp;<%= postData.post_descript %></p>
+                        <p class="card-text">&emsp; - <%= postData.post_preDes %></p>
+                        <p class="card-text">&emsp; - <%= postData.post_descript %></p>
                     </div>
                     <div class="card-footer">
                         <p class="text-end my-0">โพสต์โดย : <%= userData.user_name %> </p>

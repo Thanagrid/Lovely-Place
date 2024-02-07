@@ -58,7 +58,7 @@ router.post('/new_post/upload', multerUpload.single('img'),(req,res)=>{
 
 
 //Post page
-router.get('/:post_id', (req,res)=>{
+router.get('/post/:post_id', (req,res)=>{
    //ดึงข้อมูล post ตาม post_id (ได้จาก URL Parameter)
    const sql_poolPost = 'SELECT * FROM posts WHERE post_id = ?;';
    pool.query(sql_poolPost, [req.params.post_id], (err, results_post, fields)=>{

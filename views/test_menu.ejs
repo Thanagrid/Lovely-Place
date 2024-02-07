@@ -14,11 +14,16 @@
     </style>
 </head>
 <body class="bg-secondary">
+
+    <%- include ('navbar.ejs') %>
+
     <div class="container d-flex justify-content-center align-content-center">
         <div class="col-lg-4 border bg-white py-3 px-5 rounded-3 d-flex flex-column mt-5 bg-light">
             <h2 class="text-center">System test Menu</h2>
             <a href="/" class="btn btn-primary my-2">Index</a>
             <a href="/new_post" class="btn btn-primary my-2">New Post</a>
+            <hr>
+            <a href="/manage_post" class="btn btn-primary my-2">Manage Post</a>
             <hr>
             <a href="/login" class="btn btn-primary my-2">Login</a>
             <a href="/register" class="btn btn-primary my-2">Register</a>
@@ -28,5 +33,6 @@
             <a href="/change_password" class="btn btn-primary my-2">Change Password</a>
         </div>
     </div>
+    
 </body>
 </html>

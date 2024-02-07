@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lovely Place | New Post</title>
+    <title>Lovely Place | Edit Post</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
@@ -21,25 +21,22 @@
 
         <div class="row justify-content-center mt-5">
             <div class="col-lg-6 col-sm-10 col-11 bg-light py-4 px-4 border rounded-4">
-                <form method="post" action="/new_post/upload" enctype="multipart/form-data">
-                    <div class="text-center h2 fw-bolder mb-4 mt-2">New Post</div>
+                <form method="post" action="/manage_post/edit/update">
+                    <input type="hidden" value="<%= postData.post_id %>" name="id">
+                    <div class="text-center h2 fw-bolder mb-4 mt-2">Edit Post</div>
                     <div class="form-group mb-4">
                         <label class="form-label">ชื่อโพสต์ :</label>
-                        <input class="form-control" type="text" name="title">
+                        <input class="form-control" type="text" name="title" value="<%= postData.post_title %>">
                     </div>
                     <div class="form-group mb-4">
                         <label class="form-label">คำอธิบายย่อ (แสดงที่หน้าแรก) :</label>
-                        <textarea class="form-control" name="preDes"></textarea>
+                        <textarea class="form-control" name="preDes"><%= postData.post_proDes %></textarea>
                     </div>
                     <div class="form-group mb-4">
                         <label class="form-label">คำอธิบาย :</label>
-                        <textarea class="form-control" name="descript"></textarea>
+                        <textarea class="form-control" name="descript"><%= postData.post_descript %></textarea>
                     </div>
-                    <div class="form-group mb-2">
-                        <label class="form-label">รูปภาพ :</label>
-                        <input class="form-control" type="file" name="img">
-                    </div>
-                    <button class="btn btn-success mt-4">Create new post</button>
+                    <button class="btn btn-success mt-4">Edit</button>
                 </form>
             </div>
         </div>

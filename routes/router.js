@@ -32,7 +32,6 @@ router.get('/', (req,res)=>{
             console.log(err);
             res.status(500);
         }else{
-            console.log(results);
             res.render('index',{posts: results});
         }
    });

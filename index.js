@@ -6,7 +6,8 @@ const cookieParser = require('cookie-parser');                      //import coo
 const loginRouter = require('./routes/loginRouter');                //import loginRouter
 const router = require('./routes/router');                          //import Main router
 const editNamePassRouter = require('./routes/editNamePassRouter');  //import change name password router
-const postRouter = require('./routes/postRouter');                        //import post router
+const postRouter = require('./routes/postRouter');                  //import post router
+const manageRouter = require('./routes/manageRouter');
 
 // static & dynamic setup
 app.use(express.static(path.join(__dirname,'public'))); // กำหนดที่อยู่ static file
@@ -19,10 +20,11 @@ app.use(express.json());
 // cookie-parser
 app.use(cookieParser());
 // router
-app.use(loginRouter); //loginRouter
-app.use(router); //main router
-app.use(editNamePassRouter); // change name password router
-app.use(postRouter); // post router
+app.use(loginRouter);           //loginRouter
+app.use(router);                //main router
+app.use(editNamePassRouter);    // change name password router
+app.use(postRouter);            // post router
+app.use(manageRouter);          // manage router
 
 //port
 const port = 8080;
