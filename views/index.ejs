@@ -14,9 +14,9 @@
             font-family: 'Kanit', sans-serif;
         }
         #searchbox{
-            background-image: url('img/background/tropical-beach (1).jpg');
+            background-image: url('img/background/9387807.jpg');
             background-size: cover;
-            background-position: 100%;
+            background-position:40%;
             height: 100%;
         }
     </style>
@@ -27,13 +27,16 @@
     
     <!-- search -->
     <div class="container-fluid d-flex justify-content-center" id="searchbox">
-        <form class="col-lg-4 col-sm-6 col-10 my-5">
+        <form class="col-lg-4 col-sm-6 col-10 my-5" action="/search" method="post">
             <div class="input-group">
-                <input class="form-control" type="text" placeholder="Search">
-                <button class="btn btn-success"><ion-icon name="search-outline"></ion-icon></button> 
+                <input class="form-control" type="text" placeholder="Search" name="search">
+                <button class="btn btn-primary"><ion-icon name="search-outline"></ion-icon></button> 
             </div>
-            
         </form>    
+    </div>
+
+    <div class="container-fluid border pt-3 bg-secondary-subtle">
+        <p class="text-center fs-3">ยินดีต้อนรับ <%= key %></p>
     </div>
     
     <!-- post display -->
@@ -50,7 +53,7 @@
                 </div>
                 <div class="d-grid mb-3 ">
                     <div class="row justify-content-center">
-                        <a href="post/<%= item.post_id %>" class="btn btn-success col-6">Read this post...</a>
+                        <a href="post/<%= item.post_id %>" class="btn btn-success col-6">Read...</a>
                     </div>
                 </div>
             </div>

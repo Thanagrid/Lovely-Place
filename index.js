@@ -4,9 +4,10 @@ const app = express();
 const path = require('path');                                       //import path
 const cookieParser = require('cookie-parser');                      //import cookie-parser
 const router = require('./routes/router');                          //import Main router
-const accountRouter = require('./routes/AC_accountRouter');                 
-const postRouter = require('./routes/P_postRouter');                               
-const adminRouter = require('./routes/AD_adminRouter');               
+const accountRouter = require('./routes/AC_accountRouter');         //import account router               
+const postRouter = require('./routes/P_postRouter');                //import post router                  
+const adminRouter = require('./routes/AD_adminRouter');             //import admin router
+const searchRouter = require('./routes/S_searchRouter');            //import search router   
 
 // static & dynamic setup
 app.use(express.static(path.join(__dirname,'public'))); // กำหนดที่อยู่ static file
@@ -21,9 +22,10 @@ app.use(cookieParser());
 // router
 
 app.use(router);                //main router
-app.use(accountRouter);           //loginRouter
+app.use(accountRouter);         //loginRouter
 app.use(postRouter);            // post router
 app.use(adminRouter);           // admin router
+app.use(searchRouter);          // Search router
 
 //port
 const port = 8080;
