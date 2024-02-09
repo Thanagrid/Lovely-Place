@@ -8,6 +8,7 @@ const accountRouter = require('./routes/AC_accountRouter');         //import acc
 const postRouter = require('./routes/P_postRouter');                //import post router                  
 const adminRouter = require('./routes/AD_adminRouter');             //import admin router
 const searchRouter = require('./routes/S_searchRouter');            //import search router   
+const reportRouter = require('./routes/RP_reportRouter');           //import report router   
 
 // static & dynamic setup
 app.use(express.static(path.join(__dirname,'public'))); // กำหนดที่อยู่ static file
@@ -20,12 +21,12 @@ app.use(express.json());
 // cookie-parser
 app.use(cookieParser());
 // router
-
 app.use(router);                //main router
 app.use(accountRouter);         //loginRouter
 app.use(postRouter);            // post router
 app.use(adminRouter);           // admin router
 app.use(searchRouter);          // Search router
+app.use(reportRouter);          // report router
 
 //port
 const port = 8080;
