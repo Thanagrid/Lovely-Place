@@ -37,9 +37,4 @@ router.get('/', (req,res)=>{
    });
 });
 
-// Test menu page
-router.get('/dev', (req,res)=>{
-    res.render('test_menu');
-})
-
 module.exports = router;

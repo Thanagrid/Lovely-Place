@@ -22,7 +22,7 @@ router.get('/admin_management', (req,res)=>{
     if(req.cookies.user_id==1){ //ตรวจสอบความเป็น Admin จาก user_id ต้องมี id = 1
         res.render('AD_adminManage');
     }else{
-        res.redirect('/');
+        res.render('error');
     }
 });
 
@@ -41,7 +41,7 @@ router.get('/admin_management/posts', (req,res)=>{
             }
         });
     }else{
-        res.redirect('/');
+        res.render('error');
     }
 });
 
