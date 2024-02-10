@@ -34,7 +34,7 @@ router.get('/', (req,res)=>{
         }else{
             res.render('index',{
                 posts: results, 
-                username: req.cookies.user_id ,
+                username: req.cookies.user_name ,
                 userLoginID: req.cookies.user_id
             });
         }
