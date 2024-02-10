@@ -32,7 +32,11 @@ router.get('/', (req,res)=>{
             console.log(err);
             res.status(500);
         }else{
-            res.render('index',{posts: results, key: req.cookies.user_name});
+            res.render('index',{
+                posts: results, 
+                username: req.cookies.user_id ,
+                userLoginID: req.cookies.user_id
+            });
         }
    });
 });

@@ -25,7 +25,11 @@ router.post('/search', (req, res)=>{
             console.log(err);
             res.status(500);
         }else{
-            res.render('S_searchResults', {posts: results ,key: req.body.search});
+            res.render('S_searchResults', {
+                posts: results,
+                username: req.body.search, 
+                userLoginID: req.cookies.user_id
+            });
         }
     });
 });

@@ -21,9 +21,12 @@ pool = mysql.createPool({
 router.get('/login', (req,res)=>{
     //ตรวจสอบการเข้าสู่ระบบ
     if(req.cookies.user_id){
-        res.render('AC_login',{message:'You already login. <a href = "/"> Click here to homepage.</a>'});
+        res.redirect('/');
     }else{
-        res.render('AC_login',{message:''});
+        res.render('AC_login',{
+            message:'', 
+            userLoginID: req.cookies.user_id
+        });
     }
 });
 
@@ -37,7 +40,10 @@ router.post('/login/verify', (req,res)=>{
             res.status(500);
         }else{
             if(results.length == 0){ //ถ้าไม่มี user_name & user_password ตรงตามที่ผู้ใช้กรอก render login.ejs แล้วส่งข้อความไปแจ้ง
-                res.render('AC_login',{message: 'Your Username or password is incorrect.'});
+                res.render('AC_login',{   
+                    message: 'Your Username or password is incorrect.',
+                    userLoginID: req.cookies.user_id
+                });
             }else{                  // ถ้ามีข้อมูล user_name & user_password ตรงตามที่ผู้ใช้กรอก
                 res.cookie('user_id',results[0].user_id,{maxAge:3600000}); //เก็บ cookie user_id ไว้ครึ่งชั่วโมง
                 res.cookie('user_name',results[0].user_name,{maxAge:3600000});  //เก็บ cookie user_name ไว้ครึ่งชั่วโมง
@@ -50,7 +56,10 @@ router.post('/login/verify', (req,res)=>{
 
 // register page
 router.get('/register', (req,res)=>{
-    res.render('AC_register',{message: ''});
+    res.render('AC_register',{
+        message: '',
+        userLoginID: req.cookies.user_id
+    });
 });
 
 
@@ -78,10 +87,16 @@ router.post('/register/verify', (req,res)=>{
                         }
                     });
                 }else{
-                    res.render('AC_register',{message: 'Confirm passwords do not match.'}); //render regis.ejs ใหม่ โดยส่งข้อความไปบอก
+                    res.render('AC_register',{
+                        message: 'Confirm passwords do not match.',
+                        userLoginID: req.cookies.user_id
+                    });
                 }
             }else{ //ถ้ามี user_name ซ้ำกับที่มีอยู่แล้ว
-                res.render('AC_register',{message: 'Sorry, this username is already in use.'}); //render regis.ejs ใหม่ โดยส่งข้อความไปบอก
+                res.render('AC_register',{   
+                        message: 'Sorry, this username is already in use.',
+                        userLoginID: req.cookies.user_id  
+                    }); 
             };
         };
     });
@@ -102,7 +117,8 @@ router.get('/change_username', (req,res)=>{
          // ดึง username เดิมไปใส่เป็นค่าเริ่มต้นในฟอร์ม
         res.render('AC_changeUsername',{
             username : req.cookies.user_name,
-            message: ''
+            message: '',
+            userLoginID: req.cookies.user_id
         });
     }else{
         res.redirect('/login');
@@ -135,7 +151,8 @@ router.post('/change_username/verify', (req, res)=>{
             }else{  //ถ้า user_name ซ้ำ
                 res.render('AC_changeUsername',{
                     username : req.cookies.user_name,
-                    message: 'Sorry, this username is already in use.'
+                    message: 'Sorry, this username is already in use.',
+                    userLoginID: req.cookies.user_id
                 });
             };
         };
@@ -146,7 +163,10 @@ router.post('/change_username/verify', (req, res)=>{
 //Change password page
 router.get('/change_password', (req,res)=>{
     if(req.cookies.user_id){ //ตรวจสอบสถานะการเข้าสู่ระบบ
-        res.render('AC_changePassword', {message: ''});
+        res.render('AC_changePassword',{
+            message: '',
+            userLoginID: req.cookies.user_id
+        });
     }else{
         res.redirect('/login');
     };
@@ -169,7 +189,10 @@ router.post('/change_password/update', (req,res)=>{
             };
         });
     }else{
-        res.render('AC_changePassword', {message: 'Confirm passwords do not match.'});
+        res.render('AC_changePassword',{
+            message: 'Confirm passwords do not match.',
+            userLoginID: req.cookies.user_id
+        });
     }
     
 });

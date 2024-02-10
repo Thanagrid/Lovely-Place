@@ -37,7 +37,9 @@ const multerUpload = multer({storage: configStorage})
 router.get('/new_post', (req,res)=>{
    // ตรวจสอบการเข้าสู่ระบบ
    if(req.cookies.user_id){
-      res.render('P_newPost');
+      res.render('P_newPost',{
+         userLoginID: req.cookies.user_id
+      });
    }else{
       res.redirect('/login');
    }
@@ -80,7 +82,11 @@ router.get('/post/:post_id', (req,res)=>{
                   res.status(200);
                }else{
                   // ส่งข้อมูล post และ username
-                  res.render('P_post',{postData: results_post[0], userData: results_user[0]});
+                  res.render('P_post',{
+                     postData: results_post[0], 
+                     userData: results_user[0],
+                     userLoginID: req.cookies.user_id
+                  });
                }
             });
             
@@ -100,7 +106,10 @@ router.get('/manage_post', (req,res)=>{
                console.log(err);
                res.status(500);
            }else{
-               res.render('P_managePost', {postData: results});
+               res.render('P_managePost',{
+                  postData: results,
+                  userLoginID: req.cookies.user_id
+               });
            }
        });
    }else{
@@ -133,7 +142,10 @@ router.post('/manage_post/edit', (req,res)=>{
            console.log(err);
            res.status(500);
        }else{
-           res.render('P_editPost', {postData: results[0]});
+           res.render('P_editPost',{
+            postData: results[0],
+            userLoginID: req.cookies.user_id
+         });
        }
    });
 });

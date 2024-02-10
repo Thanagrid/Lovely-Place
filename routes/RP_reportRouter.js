@@ -18,7 +18,11 @@ pool = mysql.createPool({
 //report page
 router.post('/report', (req,res)=>{
     if(req.cookies.user_id){
-        res.render('RP_report', {post_id: req.body.post_id, user_id: req.cookies.user_id});
+        res.render('RP_report',{
+            post_id: req.body.post_id, 
+            user_id: req.cookies.user_id,
+            userLoginID: req.cookies.user_id
+        });
     }else{
         res.redirect('/login');
     }
@@ -46,7 +50,10 @@ router.get('/admin_management/report', (req, res)=>{
                 console.log(err);
                 res.status(500);
             }else{
-                res.render('RP_reportManage', {reportData: results});
+                res.render('RP_reportManage',{
+                    reportData: results,
+                    userLoginID: req.cookies.user_id
+                });
             }
         });
     }else{

@@ -20,9 +20,13 @@ pool = mysql.createPool({
 //Admin Management Page
 router.get('/admin_management', (req,res)=>{
     if(req.cookies.user_id==1){ //ตรวจสอบความเป็น Admin จาก user_id ต้องมี id = 1
-        res.render('AD_adminManage');
+        res.render('AD_adminManage',{
+            userLoginID: req.cookies.user_id
+        });
     }else{
-        res.render('error');
+        res.render('error',{
+            userLoginID: req.cookies.user_id
+        });
     }
 });
 
@@ -37,11 +41,16 @@ router.get('/admin_management/posts', (req,res)=>{
                 console.log(err);
                 res.status(500);
             }else{
-                res.render('AD_managePosts', {postData: results});
+                res.render('AD_managePosts',{
+                    postData: results,
+                    userLoginID: req.cookies.user_id
+                });
             }
         });
     }else{
-        res.render('error');
+        res.render('error',{
+            userLoginID: req.cookies.user_id
+        });
     }
 });
 
@@ -71,7 +80,10 @@ router.get('/admin_management/users', (req, res)=>{
                 console.log(err);
                 res.status(500);
             }else{
-                res.render('AD_manageUsers', {users: results});            
+                res.render('AD_manageUsers',{
+                    users: results,
+                    userLoginID: req.cookies.user_id
+                });            
             }
         });
     }else{
