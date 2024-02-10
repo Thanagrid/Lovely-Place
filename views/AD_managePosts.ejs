@@ -47,7 +47,7 @@
                         <td>
                             <form method="post" action="/admin_management/posts/delete">
                                 <input type="hidden" value="<%= item.post_id %>" name="post_id">
-                                <button type="sumbit" class="btn btn-danger col-12">ลบ</button>
+                                <button type="sumbit" class="btn btn-danger col-12" onclick="return confirm('คุณต้องการลบโพสต์หรือไม่')">ลบ</button>
                             </form>
                         </td>
                     </tr>

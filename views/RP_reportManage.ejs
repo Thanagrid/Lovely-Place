@@ -48,13 +48,13 @@
                         <td>
                             <form method="post" action="/admin_management/report/delete_report">
                                 <input type="hidden" value="<%= item.report_id %>" name="report_id">
-                                <button type="sumbit" class="btn btn-warning col-12">ลบคำรายงาน</button>
+                                <button type="sumbit" class="btn btn-warning col-12" onclick="return confirm('คุณต้องการลบคำรายงานหรือไม่')">ลบคำรายงาน</button>
                             </form>
                         </td>
                         <td>
                             <form method="post" action="/admin_management/report/delete_post">
                                 <input type="hidden" value="<%= item.post_id %>" name="post_id">
-                                <button type="sumbit" class="btn btn-danger col-12">ลบโพสต์</button>
+                                <button type="sumbit" class="btn btn-danger col-12" onclick="return confirm('คุณต้องการลบโพสต์หรือไม่')">ลบโพสต์</button>
                             </form>
                         </td>
                     </tr>

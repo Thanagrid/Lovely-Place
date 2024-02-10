@@ -40,7 +40,7 @@
                             <% if(item.user_id!=1){ %>
                             <form method="post" action="/admin_management/users/delete">
                                 <input type="hidden" value="<%= item.user_id %>" name="user_id">
-                                <button type="sumbit" class="btn btn-danger col-12">ลบ</button>
+                                <button type="sumbit" class="btn btn-danger col-12" onclick="return confirm('คุณต้องการลบผู้ใช้หรือไม่')">ลบ</button>
                             </form>
                             <% } %>
                         </td>

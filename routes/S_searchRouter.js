@@ -27,7 +27,7 @@ router.post('/search', (req, res)=>{
         }else{
             res.render('S_searchResults', {
                 posts: results,
-                username: req.body.search, 
+                searchResults: req.body.search, 
                 userLoginID: req.cookies.user_id
             });
         }
