@@ -11,6 +11,14 @@
         *{
             font-family: 'Kanit', sans-serif;
         }
+        body {
+ 
+            background-image: url('img/background/pexels-eberhard-grossgasteiger-443446.jpg');
+            background-size: cover;
+            background-position:40%;
+            background-repeat: no-repeat;
+            height: 100vh;
+        }
     </style>
 </head>
 <body class="bg-secondary">
@@ -19,9 +27,9 @@
     
     <div class="container-fluid mt-0">
 
-        <div class="row mt-3 justify-content-center">
+        <div class="row mt-3 justify-content-center pt-5">
 
-            <div class="col-xl-3 col-lg-6 col-sm-7 col-10 pt-4 px-5 rounded-4 border align-self-center bg-light">
+            <div class="col-xl-3 col-lg-6 col-sm-7 col-10 pt-4 px-5 rounded-4 border align-self-center bg-light mt-5">
                 <h1 class="display-6 text-center fw-normal">REGISTOR</h1>
                 <form method="post" action="/register/verify">
                     <div class="form-group my-4">
@@ -32,7 +40,7 @@
                         <label for="password" class="control-label">Password : </label>
                         <input type="password" class="form-control" name="password">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group mt-2">
                         <label for="password" class="control-label">Confirm Password : </label>
                         <input type="password" class="form-control" name="confirm_password">
                     </div>

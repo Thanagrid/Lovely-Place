@@ -19,11 +19,19 @@
             background-position:40%;
             height: 100%;
         }
+
+        body {
+ 
+            background-image: url('img/background/pexels-eberhard-grossgasteiger-2088170.jpg');
+            height: 100%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position:40%;
+        }
     </style>
 </head>
 <body class="bg-light">
 
-    
     <%- include ('navbar.ejs') %>
     
     <!-- search -->
@@ -31,13 +39,13 @@
         <form class="col-lg-4 col-sm-6 col-10 my-5" action="/search" method="post">
             <div class="input-group">
                 <input class="form-control" type="text" placeholder="Search" name="search">
-                <button class="btn btn-primary"><ion-icon name="search-outline"></ion-icon></button> 
+                <button class="btn text-white" style="background-color: #845EC2 "><ion-icon name="search-outline"></ion-icon></button> 
             </div>
         </form>    
     </div>
 
-    <div class="container-fluid border pt-3 bg-secondary-subtle">
-        <p class="text-center fs-3">ยินดีต้อนรับ <%= username %></p>
+    <div class="container-fluid border pt-3" style="background-color: #8b73ac">
+        <p class="text-center fs-3 text-white">ยินดีต้อนรับ <%= username %></p>
     </div>
     
     <!-- post display -->
@@ -54,7 +62,7 @@
                 </div>
                 <div class="d-grid mb-3 ">
                     <div class="row justify-content-center">
-                        <a href="post/<%= item.post_id %>" class="btn btn-success col-6">Read...</a>
+                        <a href="post/<%= item.post_id %>" class="btn text-white col-6" style="background-color:#9535cc ">Read</a>
                     </div>
                 </div>
             </div>

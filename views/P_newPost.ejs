@@ -11,6 +11,15 @@
         *{
             font-family: 'Kanit', sans-serif;
         }
+
+        body {
+ 
+            background-image: url('img/background/pexels-stephan-seeber-1054218.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position:40%;
+            height: 100vh;
+        }
     </style>
 </head>
 <body class="bg-secondary">
@@ -20,7 +29,7 @@
     <div class="container">
 
         <div class="row justify-content-center mt-5">
-            <div class="col-lg-6 col-sm-10 col-11 bg-light py-4 px-4 border rounded-4">
+            <div class="col-lg-6 col-sm-10 col-11 bg-light py-4 px-4 border rounded-4 mt-lg-5">
                 <form method="post" action="/new_post/upload" enctype="multipart/form-data">
                     <div class="text-center h2 fw-bolder mb-4 mt-2">New Post</div>
                     <div class="form-group mb-4">
@@ -39,7 +48,7 @@
                         <label class="form-label">รูปภาพ :</label>
                         <input class="form-control" type="file" name="img">
                     </div>
-                    <button class="btn btn-success mt-4">Create new post</button>
+                    <button class="btn text-white mt-4 float-end" style="background-color:#845EC2">Create new post</button>
                 </form>
             </div>
         </div>

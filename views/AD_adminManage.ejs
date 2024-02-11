@@ -11,13 +11,22 @@
         *{
             font-family: 'Kanit', sans-serif;
         }
+
+        body {
+ 
+            background-image: url('img/background/pexels-pixabay-459225.jpg');
+            background-size: cover;
+            background-position:40%;
+            background-repeat: no-repeat;
+            height: 100vh;
+}
     </style>
 </head>
 <body class="bg-light ">
     
     <%- include ('navbar.ejs') %>
 
-    <div class="container d-flex justify-content-center align-content-center">
+    <div class="container d-flex justify-content-center align-content-center pt-5">
         <div class="col-lg-4 border bg-white py-3 px-5 rounded-3 d-flex flex-column mt-5 bg-light">
             <h2 class="text-center">Admin Management</h2>
             <a href="/admin_management/users" class="btn btn-primary my-2">User Manage</a>
