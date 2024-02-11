@@ -81,9 +81,7 @@ router.post('/register/verify', (req,res)=>{
                             console.log(err);
                             res.status(500);
                         }else{
-                            res.cookie('user_id',results[0].user_id,{maxAge:3600000}); //เก็บ cookie user_id ไว้ชั่วโมง
-                            res.cookie('user_name',results[0].user_name,{maxAge:3600000});  //เก็บ cookie user_name ไว้ชั่วโมง
-                            res.redirect('/'); 
+                            res.redirect('/login'); 
                         }
                     });
                 }else{
