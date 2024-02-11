@@ -19,18 +19,9 @@
             background-position:40%;
             height: 100%;
         }
-
-        body {
- 
-            background-image: url('img/background/pexels-eberhard-grossgasteiger-2088170.jpg');
-            height: 100%;
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position:40%;
-        }
     </style>
 </head>
-<body class="bg-light">
+<body class="bg-white">
 
     <%- include ('navbar.ejs') %>
     
@@ -44,8 +35,8 @@
         </form>    
     </div>
 
-    <div class="container-fluid border pt-3" style="background-color: #8b73ac">
-        <p class="text-center fs-3 text-white">ยินดีต้อนรับ <%= username %></p>
+    <div class="container-fluid border pt-3 bg-light">
+        <p class="text-center fs-3 text-dark">ยินดีต้อนรับ <%= username %></p>
     </div>
     
     <!-- post display -->
@@ -53,7 +44,7 @@
 
         <div class="row justify-content-center mx-4 my-4">
             <% Object.values(posts).forEach((item)=>{ %>
-            <div class="card col-lg-2 col-sm-5 col-11 mb-4 mx-2">
+            <div class="card col-lg-2 col-sm-5 col-11 mb-4 mx-2 bg-light">
                 <img class="card-img-top" src="img/posts/<%= item.post_img %>" alt="Card image">  
                 <div class="card-body">
                     <h4 class="card-title text-center"><%= item.post_title %></h4>
@@ -62,7 +53,7 @@
                 </div>
                 <div class="d-grid mb-3 ">
                     <div class="row justify-content-center">
-                        <a href="post/<%= item.post_id %>" class="btn text-white col-6" style="background-color:#9535cc ">Read</a>
+                        <a href="post/<%= item.post_id %>" class="btn text-white col-6" style="background-color:#845EC2 ">Read</a>
                     </div>
                 </div>
             </div>

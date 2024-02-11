@@ -20,16 +20,9 @@
             height: 20%;
         }
 
-        body {
-            background-image: url('img/background/pexels-eberhard-grossgasteiger-2088170.jpg');
-            height: 100vh;
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position:40%;
-        }
     </style>
 </head>
-<body class="bg-light">
+<body class="bg-white">
 
     <%- include ('navbar.ejs') %>
 
@@ -38,20 +31,20 @@
         <form class="col-lg-4 col-sm-6 col-10 my-5" action="/search" method="post">
             <div class="input-group">
                 <input class="form-control" type="text" placeholder="Search" name="search">
-                <button class="btn btn-primary"><ion-icon name="search-outline"></ion-icon></button> 
+                <button class="btn btn-primary" style="background-color: #845EC2"><ion-icon name="search-outline"></ion-icon></button> 
             </div>
         </form>    
     </div>
 
-    <div class="container-fluid border pt-3 " style="background-color: #8b73ac">
-        <p class="text-center fs-3 text-white "> ผลการค้นหา : <%= searchResults %></p>
+    <div class="container-fluid border pt-3 bg-light">
+        <p class="text-center fs-3 text-dark"> ผลการค้นหา : <%= searchResults %></p>
     </div>
     <!-- post display -->
     <div class="container-fluid " >
 
         <div class="row justify-content-center mx-4 my-4">
             <% Object.values(posts).forEach((item)=>{ %>
-                <div class="card col-lg-2 col-sm-5 col-11 mb-4 mx-2">
+                <div class="card col-lg-2 col-sm-5 col-11 mb-4 mx-2 bg-light">
                     <img class="card-img-top" src="img/posts/<%= item.post_img %>" alt="Card image">  
                     <div class="card-body">
                         <h4 class="card-title text-center"><%= item.post_title %></h4>
@@ -60,7 +53,7 @@
                     </div>
                     <div class="d-grid mb-3 ">
                         <div class="row justify-content-center">
-                            <a href="post/<%= item.post_id %>" class="btn text-white col-6" style="background-color:#9535cc ">Read</a>
+                            <a href="post/<%= item.post_id %>" class="btn text-white col-6" style="background-color:#845EC2 ">Read</a>
                         </div>
                     </div>
                 </div>
